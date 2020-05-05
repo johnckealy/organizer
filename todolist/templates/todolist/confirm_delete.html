@@ -1,0 +1,18 @@
+{% extends 'todolist/base.html' %}
+
+
+{% block content %}
+
+   <form method="post">
+       {% csrf_token %}
+       <div class="form-row">
+           <div class="alert alert-warning">
+               Are you sure you want to delete the task "{{ object }}"?
+           </div>
+       </div>
+       <button type="submit" class="btn btn-danger">
+           <span class="glyphicon glyphicon-trash"></span>
+       </button>
+   </form>
+
+{% endblock %}

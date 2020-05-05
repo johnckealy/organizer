@@ -1,0 +1,23 @@
+{% extends 'todolist/base.html' %}
+
+
+{% block content %}
+
+
+<h2>{{ task.name }}</h2>
+<h4>{{ task.description }}</h4>
+<h4>{{ task.due_by }}</h4>
+
+{% if task.done  %}
+  <h3>This task has been marked as done.</h3>
+{% else %}
+  <form action="{% url 'todolist:done' task.id %}" method="post">
+    {% csrf_token %}
+    Mark as <input type="submit" name="done" value="Done">
+  </form>
+{% endif  %}
+
+<a href="/">Back </a><a href="{% url 'todolist:edit' task.id %}"> Edit</a><a href="{% url 'todolist:delete' task.id %}"> Delete</a>
+
+
+{% endblock %}

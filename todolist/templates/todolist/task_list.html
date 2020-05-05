@@ -1,0 +1,19 @@
+{% extends 'todolist/base.html' %}
+
+
+{% block content %}
+
+  
+  <h1>My Tasks</h1>
+  <ul>
+    {% for task in task_list %}
+      <li>
+        <a href="{% url 'todolist:detail' task.id %}">{{ task }}</a>
+        {% if task.done %} <span>✔</span> {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'todolist:create' %}">Create a new task</a>
+
+{% endblock %}
